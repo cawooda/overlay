@@ -8,7 +8,7 @@ clone repository and install dependencies:
 
 #Development
 
-`use npm run dev -- --host`
+use `npm run dev -- --host`
 
 you will also need to provide a tunnel to this host using in a seperate terminal:
 
@@ -28,6 +28,53 @@ With the returned cloudflared tunnel address you will then place the app into a 
 
 <script type="module" src="https://columns-mailto-thanksgiving-north.trycloudflare.com/@vite/client"></script>
 <script type="module" src="https://columns-mailto-thanksgiving-north.trycloudflare.com/src/main.tsx"></script>
+```
+
+You will probably want code that enables you to turn the overlay on or off. place this in your site for:
+
+```<style>
+  .feedback {
+    width: 30px;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-color: orange;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .disabled {
+    border: 2px solid orange;
+    color: orange;
+    background-color: white;
+  }
+.feedbackContainer {
+display:flex;
+justify-content:center;
+}
+</style>
+<div class="feedbackContainer">
+<button id="feedback" class="feedback" type="button">F</button>;
+</div>
+<script>
+  try {
+    const feedback = document.getElementById("feedback");
+    feedback.addEventListener("click", () => {
+      feedback.classList.toggle("disabled");
+      if (feedback.classList.contains("disabled")) {
+        localStorage.setItem("overlay", "hide");
+      } else {
+        localStorage.setItem("overlay", "show");
+      }
+      location.reload();
+    });
+  } catch (error) {
+    console.log(error);
+  }
+</script>
 ```
 
 # Roadmap

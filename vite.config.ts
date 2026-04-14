@@ -10,6 +10,5 @@ export default defineConfig({
     cors: {
       origin: "https://www.santoshayogagippsland.com",
     },
-    allowedHosts: ["columns-mailto-thanksgiving-north.trycloudflare.com"],
   },
 });
