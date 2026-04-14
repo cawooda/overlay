@@ -1,12 +1,13 @@
-import "./App.css";
+import { useState } from "react";
 import Menu from "./components/Menu";
+
 function App() {
-  if (localStorage.getItem("overlay") == "show")
-    return (
-      <>
-        <Menu />
-      </>
-    );
+  const [overlayOn] = useState(() => {
+    return localStorage.getItem("overlay") === "show";
+  });
+
+if (overlayOn) return <Menu/>
+  
 }
 
 export default App;

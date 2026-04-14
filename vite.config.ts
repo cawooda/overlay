@@ -11,4 +11,13 @@ export default defineConfig({
       origin: "https://www.santoshayogagippsland.com",
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        entryFileNames: "overlay-app.js",
+        chunkFileNames: "chunks/[name].js",
+        assetFileNames: "assets/[name][extname]",
+      },
+    },
+  },
 });
